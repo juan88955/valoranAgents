@@ -8,7 +8,7 @@ function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
                         <h3 className="text-xl font-bold font-valorant">VALORANT AGENTS</h3>
-                        <p className="text-sm mt-2">© 2023 Juan Forero. All rights reserved.</p>
+                        <p className="text-sm mt-2">© 2024 Juan Forero. All rights reserved.</p>
                     </div>
                     <div className="flex space-x-4">
                         <a href="https://github.com/juan88955" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors duration-300">
