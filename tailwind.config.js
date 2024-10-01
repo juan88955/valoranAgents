@@ -4,14 +4,17 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  // Configuración de Tailwind CSS
   theme: {
     extend: {
       fontFamily: {
         'valorant': ['Teko', 'sans-serif'],
       },
+      // Animaciones
       animation: {
         'fade-in-out': 'fadeInOut 3s ease-in-out',
       },
+      // Clases de animación
       keyframes: {
         fadeInOut: {
           '0%': { opacity: 0 },

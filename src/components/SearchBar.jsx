@@ -1,6 +1,7 @@
 // Función para mostrar un campo de búsqueda de agentes
 function SearchBar({ searchText, setSearchText }) {
     return (
+      // Crear un componente que muestre un campo de búsqueda de agentes
       <input
         type="text"
         placeholder="Search agents..."

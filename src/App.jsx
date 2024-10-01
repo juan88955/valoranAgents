@@ -1,4 +1,3 @@
-// Importar las librerías necesarias
 import { useState, useEffect } from 'react'
 import AgentList from './components/AgentList'
 import SearchBar from './components/SearchBar'
@@ -144,37 +143,43 @@ function App() {
             <SearchBar searchText={searchText} setSearchText={setSearchText} />
             <RoleFilter selectedRole={selectedRole} setSelectedRole={setSelectedRole} roles={roles} />
           </div>
+          {/* Botón para abrir el modal de equipo */}
           <button
             onClick={() => setIsModalOpen(true)}
             className="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition-colors duration-300 shadow-lg hover:shadow-red-500/50"
           >
+            {/* Mostrar el número de agentes en el equipo y el número máximo de agentes permitidos */}
             Team ({team.length}/5)
           </button>
         </div>
-
+        {/* Renderizar el modal de equipo */}
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Your Team">
           <TeamList team={team} removeFromTeam={removeFromTeam} />
         </Modal>
-
+        {/* Renderizar la lista de agentes filtrados y paginados */}
         {filteredAgents.length > 0 ? (
           <>
+            {/* Renderizar la lista de agentes en la página actual */}
             <AgentList
               agents={currentAgents}
               addToTeam={addToTeam}
               team={team}
             />
+            {/* Renderizar el componente de paginación */}
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={onPageChange}
             />
           </>
+
         ) : (
+          // Si no hay agentes que coincidan con la búsqueda, mostrar un mensaje de error
           <div className="text-center mt-8 text-xl text-red-400">
             No agents found matching your search
           </div>
         )}
-
+        {/* Renderizar el componente de notificación temporal (toast) */}
         {toastMessage && <Toast message={toastMessage} onClose={() => setToastMessage('')} />}
       </div>
       <Footer />
