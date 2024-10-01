@@ -7,6 +7,7 @@ import TeamList from './TeamList'
 import Modal from './Modal'
 import Pagination from './Pagination'
 import Toast from './Toast'
+import Footer from './Footer'
 
 function App() {
   // Estado para almacenar los agentes cargados desde la API
@@ -135,8 +136,8 @@ function App() {
 
   // Renderizar el componente principal
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
+      <div className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-5xl font-bold text-center my-8 text-red-500 font-valorant">VALORANT AGENTS</h1>
         <div className="mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between">
           <div className="flex flex-col sm:flex-row gap-4 flex-grow">
@@ -176,6 +177,7 @@ function App() {
 
         {toastMessage && <Toast message={toastMessage} onClose={() => setToastMessage('')} />}
       </div>
+      <Footer />
     </div>
   )
 }
