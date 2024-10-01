@@ -1,13 +1,13 @@
 // Importar las librerías necesarias
 import { useState, useEffect } from 'react'
-import AgentList from './AgentList'
-import SearchBar from './SearchBar'
-import RoleFilter from './RoleFilter'
-import TeamList from './TeamList'
-import Modal from './Modal'
-import Pagination from './Pagination'
-import Toast from './Toast'
-import Footer from './Footer'
+import AgentList from './components/AgentList'
+import SearchBar from './components/SearchBar'
+import RoleFilter from './components/RoleFilter'
+import TeamList from './components/TeamList'
+import Modal from './components/Modal'
+import Pagination from './components/Pagination'
+import Toast from './components/Toast'
+import Footer from './components/Footer'
 
 function App() {
   // Estado para almacenar los agentes cargados desde la API
