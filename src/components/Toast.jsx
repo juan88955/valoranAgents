@@ -1,23 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setToastMessage } from '../store/slices/teamSlice'
 
-// Función para mostrar un mensaje de notificación temporal
-function Toast({ message, onClose }) {
+function Toast() {
+    const dispatch = useDispatch()
+    const message = useSelector(state => state.team.toastMessage)
+
     useEffect(() => {
-        // Crear un efecto que limpia el mensaje después de 3 segundos
-        const timer = setTimeout(() => {
-            onClose();
-        }, 3000);
-        // Llamar al método onClose cuando el componente se desmonte
+        if (message) {
+            const timer = setTimeout(() => {
+                dispatch(setToastMessage(''))
+            }, 3000)
 
-        return () => clearTimeout(timer);
-    }, [onClose]);
-        // Llamar al método onClose cuando el componente se desmonte
+            return () => clearTimeout(timer)
+        }
+    }, [message, dispatch])
+
+    if (!message) return null
+
     return (
-        // Crear un componente que muestre un mensaje de notificación temporal
         <div className="fixed bottom-4 right-4 bg-yellow-500 text-black px-6 py-3 rounded-md shadow-lg animate-fade-in-out">
             {message}
         </div>
-    );
+    )
 }
 
-export default Toast;
+export default Toast

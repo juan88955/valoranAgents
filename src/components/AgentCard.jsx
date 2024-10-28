@@ -1,9 +1,17 @@
-// funbción para mostrar un agente en una tarjeta
-function AgentCard({ agent, addToTeam, team }) {
-    const isInTeam = team.some(teamAgent => teamAgent.uuid === agent.uuid);
+// AgentCard.jsx
+import { useDispatch, useSelector } from 'react-redux'
+import { addOrRemoveTeamMember } from '../store/slices/teamSlice'
+
+function AgentCard({ agent }) {
+    const dispatch = useDispatch()
+    const team = useSelector(state => state.team.members)
+    const isInTeam = team.some(teamAgent => teamAgent.uuid === agent.uuid)
+
+    const handleTeamAction = () => {
+        dispatch(addOrRemoveTeamMember(agent))
+    }
 
     return (
-        // Crear un componente que muestre un agente en una tarjeta
         <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-red-500/50">
             <div className="relative pt-[100%]">
                 <img
@@ -11,22 +19,20 @@ function AgentCard({ agent, addToTeam, team }) {
                     alt={agent.displayName}
                     className="absolute top-0 left-0 w-full h-full object-cover object-top"
                 />
-                {/* Crear un componente que muestre una imagen del agente */}
             </div>
             <div className="p-4">
                 <h2 className="text-xl font-bold text-red-500">{agent.displayName}</h2>
                 <p className="text-sm text-gray-400 mb-2">
                     {agent.role ? agent.role.displayName : 'Role not available'}
                 </p>
-                {/* Crear un componente que muestre el nombre del agente y su rol */}
                 <button
-                    onClick={() => addToTeam(agent)}
-                    className={`mt-2 w-full py-2 rounded-full transition-colors duration-300 ${isInTeam
-                        ? 'bg-red-500 text-white hover:bg-red-600'
-                        : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                        }`}
+                    onClick={handleTeamAction}
+                    className={`mt-2 w-full py-2 rounded-full transition-colors duration-300 ${
+                        isInTeam
+                            ? 'bg-red-500 text-white hover:bg-red-600'
+                            : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                    }`}
                 >
-                    {/* Crear un componente que muestre un botón para agregar o quitar un agente del equipo */}
                     {isInTeam ? 'Remove from Team' : 'Add to Team'}
                 </button>
             </div>
